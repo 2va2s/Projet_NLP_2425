@@ -1,8 +1,12 @@
 import streamlit as st
+import tempfile
 from src.whisper_utils import transcribe_audio
 from src.chatbot import generate_answer
 from src.ingest import embed_and_store
+import wave
+import numpy as np
 import os
+import io 
 
 st.title("Enterprise FAQ Chatbot")
 
@@ -28,11 +32,19 @@ if st.sidebar.button("Index documents"):
 
 st.header("Posez votre question ou déposez un audio")
 question = st.text_input("Question")
-audio = st.file_uploader("Audio file", type=["mp3","wav"])
+audio = st.audio_input(
+    "🎤 Record your question", 
+    label_visibility="visible"
+)  # returns UploadedFile (BytesIO) or None :contentReference[oaicite:0]{index=0}
+
+
 if audio is not None:
-    text = transcribe_audio(audio)
-    st.write("Transcription:", text)
-    question = text
+    st.session_state.audio_bytes = audio.getvalue() 
+    audio = io.BytesIO(st.session_state.audio_bytes)  # Convert to BytesIO for processing
+    audio.name = "voice_input.mp3"
+
+    question = transcribe_audio(audio)
+    st.write("Transcription :", question)
 
 if st.button("Envoyer"):
     answer = generate_answer(question, collection_name="company_faq")
