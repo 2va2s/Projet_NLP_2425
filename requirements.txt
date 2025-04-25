@@ -5,5 +5,4 @@ openai-whisper
 python-dotenv
 faiss-cpu
 tiktoken
-os
 PyPDF2
