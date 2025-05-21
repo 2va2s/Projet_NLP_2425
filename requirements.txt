@@ -6,3 +6,4 @@ python-dotenv
 faiss-cpu
 tiktoken
 PyPDF2
+pymupdf

@@ -172,3 +172,8 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+# 🔐 Ne jamais pousser la clé OpenAI
+.env
+
+# 🧠 Dossier ChromaDB local (non persistant sur Streamlit Cloud)
+data/
