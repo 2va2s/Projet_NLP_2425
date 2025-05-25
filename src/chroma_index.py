@@ -1,10 +1,6 @@
-from chromadb import Client
+from chroma_client import client
 from chromadb.config import Settings
 
-client = Client(Settings(
-    chroma_db_impl="duckdb+parquet",
-    persist_directory=None, 
-))
 
 
 def list_documents(collection_name):
