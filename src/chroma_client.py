@@ -9,4 +9,8 @@ sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")
 from chromadb import Client
 from chromadb.config import Settings
 
-client = Client(Settings(anonymized_telemetry=False))
+@st.cache_resource
+def get_chroma_client():
+    return Client(Settings(persist_directory="data/chroma_db"))
+
+client = get_chroma_client()
