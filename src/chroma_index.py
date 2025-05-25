@@ -2,7 +2,7 @@ from chromadb import Client
 from chromadb.config import Settings
 
 client = Client(Settings(
-    persist_directory="data/chroma_db",  # tu peux changer ce chemin si besoin
+    persist_directory=None, 
 ))
 
 
