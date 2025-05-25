@@ -8,3 +8,4 @@ tiktoken
 PyPDF2
 pymupdf
 streamlit-webrtc==0.45.0
+protobuf==3.20.3
