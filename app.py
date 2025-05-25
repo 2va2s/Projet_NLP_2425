@@ -1,4 +1,7 @@
 import streamlit as st
+st.set_page_config(page_title="FAQ Chatbot", page_icon="💬")
+
+
 import os
 import io
 import sys
@@ -16,7 +19,6 @@ from chatbot import generate_answer
 from ingest import embed_and_store
 from chroma_index import list_documents, delete_document_chunks
 
-st.set_page_config(page_title="FAQ Chatbot", page_icon="💬")
 st.title("💬 Enterprise FAQ Chatbot")
 
 # Initialiser l'historique
