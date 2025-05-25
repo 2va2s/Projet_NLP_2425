@@ -7,4 +7,4 @@ faiss-cpu
 tiktoken
 PyPDF2
 pymupdf
-streamlit-webrtc
+streamlit-webrtc==0.45.0
