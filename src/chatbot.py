@@ -1,6 +1,6 @@
 import os
 from openai import OpenAI
-from chromadb import Client
+from chroma_client import client
 from chromadb.config import Settings
 from dotenv import load_dotenv
 
@@ -9,10 +9,6 @@ api_key = os.getenv("OPENAI_API_KEY")
 
 # Initialisation OpenAI
 openai_client = OpenAI(api_key=api_key)
-client = Client(Settings(
-    chroma_db_impl="duckdb+parquet",
-    persist_directory=None  # Use in-memory DB
-))
 
 def generate_answer(question, collection_name="company_faq"):
     collection = client.get_or_create_collection(collection_name)
