@@ -9,7 +9,10 @@ api_key = os.getenv("OPENAI_API_KEY")
 
 # Initialisation OpenAI
 openai_client = OpenAI(api_key=api_key)
-client = Client(Settings(persist_directory="data/chroma_db"))
+client = Client(Settings(
+    chroma_db_impl="duckdb+parquet",
+    persist_directory=None  # Use in-memory DB
+))
 
 def generate_answer(question, collection_name="company_faq"):
     collection = client.get_or_create_collection(collection_name)
