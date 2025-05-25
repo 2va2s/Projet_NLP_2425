@@ -1,3 +1,6 @@
+import os
+os.environ["CHROMA_DB_IMPL"] = "duckdb+parquet"
+
 from chromadb import Client
 from chromadb.config import Settings
 
